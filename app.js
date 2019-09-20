@@ -211,6 +211,7 @@ function createButton() {
   //   } else target.closest('.section').id = finalScreen next {
   //     return `<button type='button' id='startoverButton'>Start Over!</button>`;
   //   }
+  return ('<button>placeholder</button>');
 }
 
 function finalScreen() {
