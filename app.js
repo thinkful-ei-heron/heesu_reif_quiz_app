@@ -237,6 +237,7 @@ function finalScreen() {
   target.html(`
     <finalBlock id='final-block'>
       <h3>${scoreText}</h3>
+      <img src="
       <button>Start Over!</button>
     </finalBlock>
     `
