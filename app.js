@@ -116,8 +116,8 @@ const qA = {
 };
 
 const currentStatus = {
+  currentPosition: `Question ${indexOf(qA.currentQuestion)}/${qA.questions.length}`,
   currentQuestion: 'blah?',
-  currentPosition: `Question ${this.currentQuestion}/${qA.questions.length}`,
   currentScore: 0
 };
 
@@ -125,24 +125,22 @@ const currentStatus = {
 function renderWelcome() {
   let target = $('#quiz-container');
   // checking target
-  console.log(target);
+  // console.log(target);
   // Render Welcome screen
-  target.innerHTML = `
-    <div class="welcome">
-      <div class="welcomeHeading">
-        <h1>test heading</h1>
+  target.html(`
+      <div class='welcome'>
+        <div class='welcomeHeading'>
+          <h1>Welcome to our Math Quiz!</h1>
+        </div>
+        <div id='welcomeImage'>  
+          <img src='https://img.freepik.com/free-vector/set-number-math-icon_1639-5572.jpg?size=626&ext=jpg'
+          alt='numbers' id='welcomeImg' </img>
+        </div>
+        <div id='start-button'>
+          <button type='button'>Start the quiz!</button>
+        </div>
       </div>
-      <div id="welcomeImage">
-        <p>this will be an image</p>
-      </div>
-      <div id="welcomeTagline">
-        <p>this will be a tagline</p>
-      </div>
-      <div id="start-button">
-        button will go here
-      </div>
-    </div>
-  `;
+  `);
   // click start button -> startQuiz();
   $('#start-button').on('click', e => {
     let clicked = e.target;
@@ -152,27 +150,79 @@ function renderWelcome() {
   });
 }
 
+// generates quiz container with all needed divs
+function startQuiz() {
+  let target = $('#quiz-container');
+  let status = createStatus();
+  let question = createQuestion();
+  let answer = createAnswers();
+  let button = createButton();
+  target.html(`
+    <section id="quiz-current">
+      <div id='#position-and-score'>
+        ${status}
+      </div>
+      <div id='current-question'>
+        ${question}
+      </div>
+      <div id='current-answers'>
+        ${answer}
+      </div>
+      ${button}
+    </section>
+  `);
+}
+
 // This will render the current question and socre
-function renderStatus() {
+function createStatus() {
   console.log(currentStatus.currentPosition);
+  let target = $('#position-and-score');
+  target.html(`
+      <span id='current-position'>${x / y} questions</span>
+      <span id='current-score'>score: ${x}</span>
+  `);
 }
 
 // This will show question
-function renderQuestion() {
-
+function createQuestion() {
+  console.log(currentStatus.currentPosition);
+  let target = $('#current-question');
+  let question;
+  // get question from qA and print out question
+  if (question = qA.questions[-1]) {
+    finalScreen();
+  } else {
+    target.html('<s class="current-question">blah?</s>');
+  }
 }
 
 // This will show answers
-function renderAnswers() {
+function createAnswers() {
+  let target = $('#current-answers');
+  // get question from qA and list answers in ul/li
+  target.html(``);
+}
+
+function createButton() {
+  let target = $('.theButton');
+  if target.closest('.section').id = quiz - current next {
+    return `<button type='button' id='submitButton'>Submit</button>`;
+  } else target.closest('.section').id = answer - screen next {
+    return `<button type='button' id='nextButton'>Next</button>`;
+  } else target.closest('.section').id = finalScreen next {
+    return `<button type='button' id='startoverButton'>Start Over!</button>`;
+  }
+}
+
+function finalScreen() {
 
 }
 
-// 
-function startQuiz() {
-  renderStatus();
-  renderQuestion();
-  renderAnswers();
+function startOver() {
+
 }
 
-// calls all needed functions
+
+
+// generates welcome screen
 renderWelcome();

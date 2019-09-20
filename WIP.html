@@ -14,6 +14,9 @@
   </div>
 </div>
 
+<!-- Quiz container -->
+<div id="quiz-current"></div>
+
 <!-- Current question and score -->
 <div id='position-and-score'>
   <span id='current-position'>${x/y} questions</span>
@@ -21,9 +24,6 @@
 </div>
 
 <!-- current question and answers -->
-<div class="question-container">
-  <s class="current-question">blah?</s>
-</div>
 <div class="answers-container">
   <div class="current-answers">
     <ul id='answers-list'>
@@ -31,3 +31,22 @@
     </ul>
   </div>
 </div>
+</div>
+
+<!-- 
+Render Welcome Screen
+then: click start button -> startQuiz()
+  startQuiz() ->
+    loop through questions:
+      <div id="quiz-current">
+        ${status}
+        ${question}
+        ${answer}
+        submit button
+          (in the button, if final question then load fianl screen)
+      </div>
+      submit 'answer' -> load answer screen -> submit 'next' -> load next question
+    then:
+      load final screen which shows score %
+      and a button to start over -> startQuiz
+-->
