@@ -191,7 +191,7 @@ function createQuestion() {
   if (currentStatus.currentQuestionIndex === qA.length - 1) {
     finalScreen();
   } else {
-    return (`<p class="current-question">${question}</p>`);
+    return (`<p class="current-question">What is ${question}?</p>`);
   }
 }
 
