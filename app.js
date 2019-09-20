@@ -116,8 +116,8 @@ const qA = {
 };
 
 const currentStatus = {
-  currentPosition: `Question ${indexOf(qA.currentQuestion)}/${qA.questions.length}`,
   currentQuestion: 'blah?',
+  currentQuestionIndex: 1,
   currentScore: 0
 };
 
@@ -160,13 +160,13 @@ function startQuiz() {
   target.html(`
     <section id="quiz-current">
       <div id='#position-and-score'>
-        ${status}
+        ${status}</br>
       </div>
       <div id='current-question'>
-        ${question}
+        ${question}</br>
       </div>
       <div id='current-answers'>
-        ${answer}
+        ${answer}</br>
       </div>
       ${button}
     </section>
@@ -175,24 +175,23 @@ function startQuiz() {
 
 // This will render the current question and socre
 function createStatus() {
-  console.log(currentStatus.currentPosition);
-  let target = $('#position-and-score');
-  target.html(`
-      <span id='current-position'>${x / y} questions</span>
-      <span id='current-score'>score: ${x}</span>
+  return (`
+    <span id='current-position'>Question: ${currentStatus.currentQuestionIndex}/${qA.questions.length}</span>
+    </br>
+    <span id='current-score'>score: ${currentStatus.currentScore}</span>
   `);
+
 }
 
 // This will show question
 function createQuestion() {
-  console.log(currentStatus.currentPosition);
-  let target = $('#current-question');
-  let question;
   // get question from qA and print out question
-  if (question = qA.questions[-1]) {
+  let question = qA.questions[currentStatus.currentQuestionIndex].question;
+  currentStatus.currentQuestionIndex += 1;
+  if (currentStatus.currentQuestionIndex === qA.length - 1) {
     finalScreen();
   } else {
-    target.html('<s class="current-question">blah?</s>');
+    return (`<p class="current-question">${question}</p>`);
   }
 }
 
@@ -204,22 +203,25 @@ function createAnswers() {
 }
 
 function createButton() {
-  let target = $('.theButton');
-  if target.closest('.section').id = quiz - current next {
-    return `<button type='button' id='submitButton'>Submit</button>`;
-  } else target.closest('.section').id = answer - screen next {
-    return `<button type='button' id='nextButton'>Next</button>`;
-  } else target.closest('.section').id = finalScreen next {
-    return `<button type='button' id='startoverButton'>Start Over!</button>`;
-  }
+  //   let target = $('.theButton');
+  //   if target.closest('.section').id = quiz - current next {
+  //     return `<button type='button' id='submitButton'>Submit</button>`;
+  //   } else target.closest('.section').id = answer - screen next {
+  //     return `<button type='button' id='nextButton'>Next</button>`;
+  //   } else target.closest('.section').id = finalScreen next {
+  //     return `<button type='button' id='startoverButton'>Start Over!</button>`;
+  //   }
 }
 
 function finalScreen() {
-
+  let target = $('#quiz-current');
+  target.html = 'done'; // placeholder
 }
 
 function startOver() {
-
+  // when start over button is clicked
+  // rerun startQuiz
+  startQuiz();
 }
 
 
