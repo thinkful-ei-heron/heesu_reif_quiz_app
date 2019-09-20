@@ -79,7 +79,7 @@ function renderWelcome() {
         </heading>
         <imageHolder id='welcomeImage'>  
           <img src='https://img.freepik.com/free-vector/set-number-math-icon_1639-5572.jpg?size=626&ext=jpg'
-          alt='numbers' id='welcomeImg' </img>
+          alt='numbers' id='welcomeImg'/>
         </imageHolder>
         <div id='start-button'>
           <button type='button'>Start the quiz!</button>
@@ -237,7 +237,8 @@ function finalScreen() {
   target.html(`
     <finalBlock id='final-block'>
       <h3>${scoreText}</h3>
-      <img src="
+      <img src='https://clipartstation.com/wp-content/uploads/2017/11/well-done-clipart-9.jpg'
+      alt='goodDone' id='wellDone'/> <br>
       <button>Start Over!</button>
     </finalBlock>
     `
