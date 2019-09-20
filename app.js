@@ -56,62 +56,7 @@ const qA = {
         '50'
       ],
       answer: '20'
-    },
-    {
-      question: '1000 + 350',
-      options: [
-        '1200',
-        '1550',
-        '1400',
-        '1350',
-        '1135'
-      ],
-      answer: '1350'
-    },
-    {
-      question: '450 * 1000',
-      options: [
-        '450000',
-        '300000',
-        '350000',
-        '540000',
-        '435000'
-      ],
-      answer: '450000'
-    },
-    {
-      question: '76580 / 10',
-      options: [
-        '7648',
-        '7635',
-        '7380',
-        '7658',
-        '7558'
-      ],
-      answer: '7658'
-    },
-    {
-      question: '75 * 40 + 55',
-      options: [
-        '4055',
-        '3100',
-        '3045',
-        '4455',
-        '3055'
-      ],
-      answer: '3055'
-    },
-    {
-      question: '81503 - 100 + 4291',
-      options: [
-        '85594',
-        '85694',
-        '86596',
-        '84931',
-        '86370'
-      ],
-      answer: '85694'
-    },
+    }
   ]
 };
 
@@ -171,6 +116,7 @@ function startQuiz() {
       ${button}
     </section>
   `);
+  currentStatus.currentQuestionIndex += 1;
 }
 
 // This will render the current question and socre
@@ -185,8 +131,7 @@ function createStatus() {
 // This will show question
 function createQuestion() {
   // get question from qA and print out question
-  let question = qA.questions[currentStatus.currentQuestionIndex].question;
-  currentStatus.currentQuestionIndex += 1;
+  let question = qA.questions[currentStatus.currentQuestionIndex - 1].question;
   if (currentStatus.currentQuestionIndex === qA.length - 1) {
     finalScreen();
   } else {
@@ -197,7 +142,8 @@ function createQuestion() {
 // This will show answers
 function createAnswers() {
   // get question from qA and list answers in ul/li
-  return ('<div>placeholder for answers</div>');
+  let answers = qA.questions[currentStatus.currentQuestionIndex - 1].options;
+  return (`<p>${answers}</p>`);
 }
 
 function createButton() {
@@ -220,6 +166,10 @@ function finalScreen() {
 function startOver() {
   // when start over button is clicked
   // rerun startQuiz
+  target.html(`
+  <
+  `
+  )
   startQuiz();
 }
 
