@@ -145,7 +145,7 @@ function renderWelcome() {
   $('#start-button').on('click', e => {
     let clicked = e.target;
     // logging to make sure button was clicked
-    console.log(clicked);
+    // console.log(clicked);
     startQuiz();
   });
 }
@@ -180,7 +180,6 @@ function createStatus() {
     </br>
     <span id='current-score'>score: ${currentStatus.currentScore}</span>
   `);
-
 }
 
 // This will show question
@@ -197,9 +196,8 @@ function createQuestion() {
 
 // This will show answers
 function createAnswers() {
-  let target = $('#current-answers');
   // get question from qA and list answers in ul/li
-  target.html(``);
+  return ('<div>placeholder for answers</div>');
 }
 
 function createButton() {
@@ -211,7 +209,7 @@ function createButton() {
   //   } else target.closest('.section').id = finalScreen next {
   //     return `<button type='button' id='startoverButton'>Start Over!</button>`;
   //   }
-  return ('<button>placeholder</button>');
+  return ('<button>placeholder for button</button>');
 }
 
 function finalScreen() {
