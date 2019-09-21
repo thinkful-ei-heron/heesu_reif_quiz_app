@@ -129,7 +129,7 @@ function createStatus() {
 function clickedTheButton() {
   $('#quiz-container').on('click', e => {
     if (e.target.className === 'theButton' && ($('input:radio:checked').length > 0)) {
-      console.log('clicked theButton');
+      // console.log('clicked theButton');
       if (e.target.closest('section')) {
         // console.log('current-quiz');
         checkAnswer();
@@ -141,7 +141,7 @@ function clickedTheButton() {
         finalScreen();
       } else {
         currentStatus.currentScore += 1;
-        console.log(currentStatus.currentScore);
+        // console.log(currentStatus.currentScore);
         renderQuiz();
       }
     }
@@ -150,7 +150,7 @@ function clickedTheButton() {
       if (currentStatus.currentQuestionIndex > qA.questions.length) {
         finalScreen();
       } else {
-        console.log(currentStatus.currentScore);
+        // console.log(currentStatus.currentScore);
         renderQuiz();
       }
 
@@ -178,13 +178,14 @@ function createQuestion() {
 // This will show answers
 function createAnswers() {
   let answersOutput = '';
-  console.log(qA.questions[currentStatus.currentQuestionIndex - 1].options);
-  for (let i = 0; i < qA.questions[currentStatus.currentQuestionIndex - 1].options.length; i++) {
-    let aValue = qA.questions[currentStatus.currentQuestionIndex - 1].options[i];
+  let questionPosition = qA.questions[currentStatus.currentQuestionIndex - 1].options;
+  // console.log(qA.questions[currentStatus.currentQuestionIndex - 1].options);
+  for (let i = 0; i < questionPosition.length; i++) {
+    let answerValue = questionPosition[i];
     answersOutput += (`
     <li>
       <input type='radio' name='answerOptions'
-        value='${aValue}'>${aValue}
+        value='${answerValue}'>${answerValue}
       </input>
     </li>
     `);
