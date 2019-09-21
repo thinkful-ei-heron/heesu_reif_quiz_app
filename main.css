@@ -16,6 +16,15 @@ body {
   display: inherit;
 }
 
+.current-question {
+  text-align: center;
+}
+
+li {
+  text-align: center;
+  
+}
+
 imageholder {
   display: inherit;
   width: 0 auto;
