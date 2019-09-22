@@ -1,5 +1,5 @@
 'use strict';
-
+// quiz questions
 const qA = {
   questions: [
     {
@@ -136,6 +136,7 @@ function clickedTheButton() {
         checkAnswer();
       }
     }
+
     if (e.target.closest('#answercorrect')) {
       // console.log('correct');
       if (currentStatus.currentQuestionIndex > qA.questions.length) {
@@ -146,6 +147,7 @@ function clickedTheButton() {
         renderQuiz();
       }
     }
+
     if (e.target.closest('#answerincorrect')) {
       // console.log('incorrect');
       if (currentStatus.currentQuestionIndex > qA.questions.length) {
@@ -155,6 +157,7 @@ function clickedTheButton() {
         renderQuiz();
       }
     }
+    
     if (e.target.closest('#final-block')) {
       currentStatus.currentQuestion = 'blah?';
       currentStatus.currentQuestionIndex = 1;
@@ -184,11 +187,10 @@ function createAnswers() {
     let answerValue = questionPosition[i];
     answersOutput += (`
     <li>
-      <input type='radio' name='answerOptions'
-        value='${answerValue}'>${answerValue}
-      </input>
-    </li>
-    `);
+      <input type='radio' name='answerOptions' value='${answerValue}'/>
+      <p id='answerText'>${answerValue}</p> 
+    </li> `);
+
   }
   // console.log(answersOutput);
   return (answersOutput);
@@ -226,30 +228,37 @@ function renderIncorrect() {
 
 function finalScreen() {
   let target = $('#quiz-current');
-  // if score > 80% good job 
-  // else socre < 80% you suck
-  // <button to start over>
   let wellDoneImg = 'img/well-done.png';
   let tryAgainImg = 'img/try-again.png';
   let imgSrc;
   let scoreText;
+  let retryButton = '';
   if (currentStatus.currentScore >= 4) {
     scoreText = 'Good Job!';
     imgSrc = wellDoneImg;
-  } else {
+    retryButton += '<button>Start Over!</button>';
+    target.html(`
+    <finalBlock id='final-block'>
+      <h3>${scoreText}</h3>
+      <h2>You got ${currentStatus.currentScore} out of ${qA.questions.length} correct</h2>
+      <img src='${imgSrc}' alt='results image' id='results-image'/> <br>
+      <div>${retryButton}</div>
+    </finalBlock>
+    `); 
+  }
+  
+  if (currentStatus.currentScore < 4) {
     scoreText = 'You Suck!';
     imgSrc = tryAgainImg;
   }
   target.html(`
     <finalBlock id='final-block'>
       <h3>${scoreText}</h3>
-      <h2>You got ${currentStatus.currentScore} correct out of ${qA.questions.length}</h2>
-      <img src='${imgSrc}'
-      alt='results image' id='results-image'/> <br>
-      <button>Start Over!</button>
+      <h2>You got ${currentStatus.currentScore} out of ${qA.questions.length} correct</h2>
+      <img src='img/try-again.png' alt='results image' id='results-image'/> <br>
+      <div>${retryButton}</div>
     </finalBlock>
-    `
-  );
+  `);
 }
 
 // generates welcome screen
