@@ -243,6 +243,7 @@ function finalScreen() {
   target.html(`
     <finalBlock id='final-block'>
       <h3>${scoreText}</h3>
+      <h2>You got ${currentStatus.currentScore} correct out of ${qA.questions.length}</h2>
       <img src='${imgSrc}'
       alt='results image' id='results-image'/> <br>
       <button>Start Over!</button>
