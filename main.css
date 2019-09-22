@@ -1,3 +1,17 @@
+body {
+  background-color: #ccebff;
+  font-family: "Comic Sans MS", cursive, sans-serif;
+}
+
+#quiz-container {
+  height: 600px;
+  width: 600px;
+  margin: 0 auto;
+  margin-top: 60px;
+  padding: 20px 10% 30px;
+  text-align: center;
+}
+
 ul {
   list-style: none;
   text-align: center;
@@ -10,15 +24,6 @@ heading {
   font-family: "Comic Sans MS", cursive, sans-serif;
   text-align: center;
   /* margin-top: auto; */
-}
-
-body {
-  font-family: "Comic Sans MS", cursive, sans-serif;
-  padding-bottom: 30px;
-  padding-top: 20px;
-  border: 3px solid black;
-  background-color: #ccebff;;
-  text-align: center;
 }
 
 .welcome {
@@ -69,4 +74,12 @@ button {
   margin: 0 auto;
   width: auto;
   height: auto;
+}
+
+#results-image {
+  height: 200px;
+}
+
+#answercorrect, #answerincorrect {
+  margin-top: 240px;
 }

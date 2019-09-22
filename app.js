@@ -68,6 +68,7 @@ const currentStatus = {
 
 // Starting screen with 'start' button
 function renderWelcome() {
+  let welcomeImg = '/img/welcome.png';
   let target = $('#quiz-container');
   // checking target
   // console.log(target);
@@ -78,7 +79,7 @@ function renderWelcome() {
           <h1>Welcome to our Math Quiz!!</h1>
         </heading>
         <imageHolder id='welcomeImage'>  
-          <img src='https://img.freepik.com/free-vector/set-number-math-icon_1639-5572.jpg?size=626&ext=jpg'
+          <img src='${welcomeImg}'
           alt='numbers' id='welcomeImg'/>
         </imageHolder>
         <div id='start-button'>
@@ -153,7 +154,6 @@ function clickedTheButton() {
         // console.log(currentStatus.currentScore);
         renderQuiz();
       }
-
     }
     if (e.target.closest('#final-block')) {
       currentStatus.currentQuestion = 'blah?';
@@ -229,17 +229,22 @@ function finalScreen() {
   // if score > 80% good job 
   // else socre < 80% you suck
   // <button to start over>
+  let wellDoneImg = '/img/well-done.png';
+  let tryAgainImg = '/img/try-again.png';
+  let imgSrc;
   let scoreText;
   if (currentStatus.currentScore >= 4) {
     scoreText = 'Good Job!';
+    imgSrc = wellDoneImg;
   } else {
     scoreText = 'You Suck!';
+    imgSrc = tryAgainImg;
   }
   target.html(`
     <finalBlock id='final-block'>
       <h3>${scoreText}</h3>
-      <img src='https://clipartstation.com/wp-content/uploads/2017/11/well-done-clipart-9.jpg'
-      alt='goodDone' id='wellDone'/> <br>
+      <img src='${imgSrc}'
+      alt='results image' id='results-image'/> <br>
       <button>Start Over!</button>
     </finalBlock>
     `
