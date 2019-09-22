@@ -5,8 +5,8 @@ body {
 }
 
 #quiz-container {
-  height: 600px;
-  width: 600px;
+  height: 0 auto;
+  width: 0 auto;
   margin: 0 auto;
   padding: 20px 30px;
   text-align: center;
@@ -16,7 +16,7 @@ ul {
   list-style: none;
   text-align: left;
   padding: 10px;
-  margin-left: 180px;
+  margin-left: 100px;
 }
 
 #answerText {
