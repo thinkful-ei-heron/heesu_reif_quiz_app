@@ -68,7 +68,7 @@ const currentStatus = {
 
 // Starting screen with 'start' button
 function renderWelcome() {
-  let welcomeImg = '/img/welcome.png';
+  let welcomeImg = 'img/welcome.png';
   let target = $('#quiz-container');
   // checking target
   // console.log(target);
@@ -229,8 +229,8 @@ function finalScreen() {
   // if score > 80% good job 
   // else socre < 80% you suck
   // <button to start over>
-  let wellDoneImg = '/img/well-done.png';
-  let tryAgainImg = '/img/try-again.png';
+  let wellDoneImg = 'img/well-done.png';
+  let tryAgainImg = 'img/try-again.png';
   let imgSrc;
   let scoreText;
   if (currentStatus.currentScore >= 4) {
