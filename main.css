@@ -16,12 +16,13 @@ ul {
   list-style: none;
   text-align: left;
   padding: 10px;
-  margin-left: 100px;
+  margin: 0 auto;
+  width: 300px;
 }
 
 #answerText {
   padding-left: 10px;
-  display: inline; 
+  display: inline;
   text-align: center;
 }
 
