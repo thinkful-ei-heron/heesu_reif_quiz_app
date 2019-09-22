@@ -22,6 +22,7 @@ ul {
 #answerText {
   padding-left: 10px;
   display: inline; 
+  text-align: center;
 }
 
 .welcome {
