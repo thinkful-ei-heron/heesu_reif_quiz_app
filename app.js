@@ -138,11 +138,11 @@ function clickedTheButton() {
     }
 
     if (e.target.closest('#answercorrect')) {
+      currentStatus.currentScore += 1;
       // console.log('correct');
       if (currentStatus.currentQuestionIndex > qA.questions.length) {
         finalScreen();
       } else {
-        currentStatus.currentScore += 1;
         // console.log(currentStatus.currentScore);
         renderQuiz();
       }
@@ -157,7 +157,7 @@ function clickedTheButton() {
         renderQuiz();
       }
     }
-    
+
     if (e.target.closest('#final-block')) {
       currentStatus.currentQuestion = 'blah?';
       currentStatus.currentQuestionIndex = 1;
@@ -171,7 +171,7 @@ function clickedTheButton() {
 function createQuestion() {
   // get question from qA and print out question
   let question = qA.questions[currentStatus.currentQuestionIndex - 1].question;
-  if (currentStatus.currentQuestionIndex === qA.length) {
+  if (currentStatus.currentQuestionIndex === qA.length + 1) {
     finalScreen();
   } else {
     return (`<p class="current-question">What is ${question}?</p>`);
@@ -233,20 +233,12 @@ function finalScreen() {
   let imgSrc;
   let scoreText;
   let retryButton = '';
-  if (currentStatus.currentScore >= 4) {
+  if (currentStatus.currentScore > 3) {
     scoreText = 'Good Job!';
     imgSrc = wellDoneImg;
     retryButton += '<button>Start Over!</button>';
-    target.html(`
-    <finalBlock id='final-block'>
-      <h3>${scoreText}</h3>
-      <h2>You got ${currentStatus.currentScore} out of ${qA.questions.length} correct</h2>
-      <img src='${imgSrc}' alt='results image' id='results-image'/> <br>
-      <div>${retryButton}</div>
-    </finalBlock>
-    `); 
   }
-  
+
   if (currentStatus.currentScore < 4) {
     scoreText = 'You Suck!';
     imgSrc = tryAgainImg;
@@ -255,7 +247,7 @@ function finalScreen() {
     <finalBlock id='final-block'>
       <h3>${scoreText}</h3>
       <h2>You got ${currentStatus.currentScore} out of ${qA.questions.length} correct</h2>
-      <img src='img/try-again.png' alt='results image' id='results-image'/> <br>
+      <img src='${imgSrc}' alt='results image' id='results-image'/> <br>
       <div>${retryButton}</div>
     </finalBlock>
   `);
