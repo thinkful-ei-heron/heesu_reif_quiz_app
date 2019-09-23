@@ -8,8 +8,12 @@ body {
   height: 0 auto;
   width: 0 auto;
   margin: 0 auto;
-  padding: 20px 30px;
+  padding-top: 30px;
   text-align: center;
+}
+
+h2 {
+  font-size: 1.2em;
 }
 
 .answer-correct, .answer-incorrect {
