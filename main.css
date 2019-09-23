@@ -12,6 +12,11 @@ body {
   text-align: center;
 }
 
+.answer-correct,
+.answer-incorrect {
+  margin-top: 100px;
+}
+
 ul {
   list-style: none;
   text-align: left;
@@ -41,6 +46,30 @@ ul {
 .current-question {
   text-align: center;
   font-size: 30px;
+}
+
+.continue-correct,
+.continue-incorrect,
+.final-submit,
+.the-button {
+  font-family: "Comic Sans MS", cursive, sans-serif;
+  background: red;
+  color: white;
+  border: 0;
+  padding: 10px 20px;
+  border-radius: 5px;
+  border: 0;
+  text-align: center;
+  margin: 0 auto;
+  width: auto;
+  height: auto;
+  display: block;
+  margin-top: 10px;
+}
+
+.results-image {
+  width: 200px;
+  height: 100px;
 }
 
 h3 {
