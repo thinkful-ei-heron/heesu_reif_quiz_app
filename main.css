@@ -12,8 +12,7 @@ body {
   text-align: center;
 }
 
-.answer-correct,
-.answer-incorrect {
+.answer-correct, .answer-incorrect {
   margin-top: 100px;
 }
 
@@ -48,10 +47,7 @@ ul {
   font-size: 30px;
 }
 
-.continue-correct,
-.continue-incorrect,
-.final-submit,
-.the-button {
+.continue-correct, .continue-incorrect, .final-submit, .the-button {
   font-family: "Comic Sans MS", cursive, sans-serif;
   background: red;
   color: white;
@@ -89,7 +85,7 @@ img {
 
 button {
   font-family: "Comic Sans MS", cursive, sans-serif;
-  background: red;
+  background: #9E0000;
   color: white;
   border: 0;
   padding: 10px 20px;
