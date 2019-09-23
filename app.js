@@ -144,10 +144,10 @@ function clickedTheButton() {
 
     if (e.target.className === 'answer-correct') {
       // console.log('answer-correct submitted');
+      currentStatus.currentScore += 1;
       if (currentStatus.currentQuestionIndex > qA.questions.length) {
         finalScreen();
       } else {
-        currentStatus.currentScore += 1;
         renderQuiz();
       }
     }
@@ -242,7 +242,7 @@ function finalScreen() {
       <form class='retry-button'>
         <input type='submit' value='Restart' class='final-submit'/>
       </form>
-    `
+    `;
   }
 
   if (currentStatus.currentScore < 4) {
