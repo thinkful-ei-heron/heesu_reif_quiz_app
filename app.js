@@ -206,26 +206,36 @@ function checkAnswer() {
   let correct = qA.questions[currentStatus.currentQuestionIndex - 2].answer;
   // console.log(correct);
   if (answer === correct) {
-    renderCorrect();
+    renderInCorrect(true);
   } else {
-    renderIncorrect();
+    renderInCorrect(false);
   }
 }
 
-function renderCorrect() {
-  $('#quiz-current').html(`
-  <form class='answer-correct'>
-    <label>Correct!</label>
-    <input role='button' type='submit' value='Next' class='continue-correct'/>
-  </form>
-  `);
-}
+// function renderCorrect() {
+//   $('#quiz-current').html(`
+//   <form class='answer-correct'>
+//     <label>Correct!</label>
+//     <input role='button' type='submit' value='Next' class='continue-correct'/>
+//   </form>
+//   `);
+// }
+// refactoered? below to only use one function instead of 2
 
-function renderIncorrect() {
+function renderInCorrect(tOrF) {
+  let classy;
+  let aLabel;
+  if (tOrF === true) {
+    classy = 'correct';
+    aLabel = 'Correct!';
+  } else if (tOrF === false) {
+    classy = 'incorrect';
+    aLabel = 'Incorrect';
+  }
   $('#quiz-current').html(`
-  <form class='answer-incorrect'>
-    <label>Incorrect!</label>
-    <input role='button' type='submit' value='Next' class='continue-incorrect'/>
+  <form class='answer-${classy}'>
+    <label>${aLabel}!</label>
+    <input role='button' type='submit' value='Next' class='continue-${classy}'/>
   </form>
   `);
 }
