@@ -60,6 +60,7 @@ const qA = {
   ]
 };
 
+// setting global variables object
 const currentStatus = {
   currentQuestion: 'blah?',
   currentQuestionIndex: 1,
@@ -78,9 +79,9 @@ function renderWelcome() {
         <heading class='welcomeHeading'>
           <h1>Welcome to our Math Quiz!!</h1>
         </heading>
-        <imageHolder id='welcomeImage'>  
+        <imageHolder class='welcomeImageContainer'>  
           <img src='${welcomeImg}'
-          alt='numbers' id='welcomeImg'/>
+          alt='math symbols' id='welcomeImg'/>
         </imageHolder>
         <div id='start-button'>
           <button type='button'>Start the quiz!</button>
@@ -103,15 +104,15 @@ function renderQuiz() {
   let answer = createAnswers();
   target.html(`
     <section id='quiz-current'>
-      <statusBlock id='#position-and-score'>
+      <statusBlock id='position-and-score'>
         ${status}
       </statusBlo>
       <questionBlock id='current-question'>
         ${question}
       </questionBlock>
-      <form id='current-answers' class='answersTest'>
+      <form class='answers-test'>
         ${answer}
-      <input id='theButton' type='submit' class='theButton'/>
+      <input type='submit' class='the-button'/>
       </form>
     </section>
   `);
@@ -121,29 +122,28 @@ function renderQuiz() {
 // This will render the current question and socre
 function createStatus() {
   return (`
-    <span id='current-position'>Question: ${currentStatus.currentQuestionIndex}/${qA.questions.length}</span>
+    <span class='current-position'>Question: ${currentStatus.currentQuestionIndex}/${qA.questions.length}</span>
     </br>
-    <span id='current-score'>Score: ${currentStatus.currentScore}</span>
+    <span class='current-score'>Score: ${currentStatus.currentScore}</span>
   `);
 }
 
 function clickedTheButton() {
   $('#quiz-container').on('submit', e => {
     e.preventDefault();
-    // e.preventPropagation();
     e.stopImmediatePropagation();
-    console.log('theButton clicked');
-    if (e.target.className === 'answersTest' && ($('input:radio:checked').length > 0)) {
-      console.log('answers submitted');
-      // console.log('clicked theButton');
+    // console.log('the-button clicked');
+    if (e.target.className === 'answers-test' && ($('input:radio:checked').length > 0)) {
+      // console.log('answers submitted');
+      // console.log('clicked the-button');
       if (e.target.closest('section')) {
         // console.log('current-quiz');
         checkAnswer();
       }
     }
 
-    if (e.target.className === 'answerCorrect') {
-      console.log('answerCorrect submitted');
+    if (e.target.className === 'answer-correct') {
+      // console.log('answer-correct submitted');
       if (currentStatus.currentQuestionIndex > qA.questions.length) {
         finalScreen();
       } else {
@@ -152,16 +152,16 @@ function clickedTheButton() {
       }
     }
     // 
-    if (e.target.className === 'answerIncorrect') {
+    if (e.target.className === 'answer-incorrect') {
       if (currentStatus.currentQuestionIndex > qA.questions.length) {
         finalScreen();
       } else {
-        console.log('answerIncorrect submitted');
+        // console.log('answer-incorrect submitted');
         renderQuiz();
       }
     }
 
-    if (e.target.className === 'retryButton') {
+    if (e.target.className === 'retry-button') {
       currentStatus.currentQuestion = 'blah?';
       currentStatus.currentQuestionIndex = 1;
       currentStatus.currentScore = 0;
@@ -212,18 +212,18 @@ function checkAnswer() {
 
 function renderCorrect() {
   $('#quiz-current').html(`
-  <form id='answerCorrect' class='answerCorrect'>
+  <form class='answer-correct'>
     <label>Correct!</label>
-    <input type='submit' value='Next' id='correctButton' class='continueCorrect'/>
+    <input type='submit' value='Next' class='continue-correct'/>
   </form>
   `);
 }
 
 function renderIncorrect() {
   $('#quiz-current').html(`
-  <form id='answerIncorrect' class='answerIncorrect'>
+  <form class='answer-incorrect'>
     <label>Incorrect!</label>
-    <input type='submit' value='Next' id='incorrectButton' class='continueIncorrect'/>
+    <input type='submit' value='Next' class='continue-incorrect'/>
   </form>
   `);
 }
@@ -247,9 +247,9 @@ function finalScreen() {
     <finalBlock id='final-block' class='finalBlock'>
       <h3>${scoreText}</h3>
       <h2>You got ${currentStatus.currentScore} out of ${qA.questions.length} correct</h2>
-      <img src='${imgSrc}' alt='results image' id='results-image'/> <br>
-      <form class='retryButton'>
-        <input type='submit' value='Start Over!' class='finalSubmit'/>
+      <img src='${imgSrc}' alt='results image' class='results-image'/> <br>
+      <form class='retry-button'>
+        <input type='submit' value='Start Over!' class='final-submit'/>
       </form>
     </finalBlock>
   `);
@@ -257,5 +257,5 @@ function finalScreen() {
 
 // generates welcome screen
 renderWelcome();
-// need to call this to watch for clicks on theButton
+// need to call this to watch for clicks on the-button
 clickedTheButton();
