@@ -109,10 +109,10 @@ function renderQuiz() {
       <questionBlock id='current-question'>
         ${question}
       </questionBlock>
-      <answerBlock id='current-answers'>
-        <ul>${answer}</ul>
-      </answerBlock>
-      <button id='theButton' class='theButton'>Submit</button>
+      <form id='current-answers' class='answersTest'>
+        ${answer}
+      <input id='theButton' type='submit' class='theButton'/>
+      </form>
     </section>
   `);
   currentStatus.currentQuestionIndex += 1;
@@ -128,8 +128,13 @@ function createStatus() {
 }
 
 function clickedTheButton() {
-  $('#quiz-container').on('click', e => {
-    if (e.target.className === 'theButton' && ($('input:radio:checked').length > 0)) {
+  $('#quiz-container').on('submit', e => {
+    e.preventDefault();
+    // e.preventPropagation();
+    e.stopImmediatePropagation();
+    console.log('theButton clicked');
+    if (e.target.className === 'answersTest' && ($('input:radio:checked').length > 0)) {
+      console.log('answers submitted');
       // console.log('clicked theButton');
       if (e.target.closest('section')) {
         // console.log('current-quiz');
@@ -137,28 +142,26 @@ function clickedTheButton() {
       }
     }
 
-    if (e.target.closest('#answercorrect')) {
-      currentStatus.currentScore += 1;
-      // console.log('correct');
+    if (e.target.className === 'answerCorrect') {
+      console.log('answerCorrect submitted');
       if (currentStatus.currentQuestionIndex > qA.questions.length) {
         finalScreen();
       } else {
-        // console.log(currentStatus.currentScore);
+        currentStatus.currentScore += 1;
+        renderQuiz();
+      }
+    }
+    // 
+    if (e.target.className === 'answerIncorrect') {
+      if (currentStatus.currentQuestionIndex > qA.questions.length) {
+        finalScreen();
+      } else {
+        console.log('answerIncorrect submitted');
         renderQuiz();
       }
     }
 
-    if (e.target.closest('#answerincorrect')) {
-      // console.log('incorrect');
-      if (currentStatus.currentQuestionIndex > qA.questions.length) {
-        finalScreen();
-      } else {
-        // console.log(currentStatus.currentScore);
-        renderQuiz();
-      }
-    }
-
-    if (e.target.closest('#final-block')) {
+    if (e.target.className === 'retryButton') {
       currentStatus.currentQuestion = 'blah?';
       currentStatus.currentQuestionIndex = 1;
       currentStatus.currentScore = 0;
@@ -166,6 +169,8 @@ function clickedTheButton() {
     }
   });
 }
+
+
 
 // This will show question
 function createQuestion() {
@@ -186,11 +191,8 @@ function createAnswers() {
   for (let i = 0; i < questionPosition.length; i++) {
     let answerValue = questionPosition[i];
     answersOutput += (`
-    <li>
       <input type='radio' name='answerOptions' value='${answerValue}'/>
-      <p id='answerText'>${answerValue}</p> 
-    </li> `);
-
+      <label id='answerText'>${answerValue}</label>`);
   }
   // console.log(answersOutput);
   return (answersOutput);
@@ -210,19 +212,19 @@ function checkAnswer() {
 
 function renderCorrect() {
   $('#quiz-current').html(`
-  <div id='answercorrect'>
-    <p>Correct!</p>
-    <button>Next</button>
-  </div id='answercorrect'>
+  <form id='answerCorrect' class='answerCorrect'>
+    <label>Correct!</label>
+    <input type='submit' value='Next' id='correctButton' class='continueCorrect'/>
+  </form>
   `);
 }
 
 function renderIncorrect() {
   $('#quiz-current').html(`
-  <div id='answerincorrect'>
-    <p>Incorrect!</p>
-    <button>Next</button>
-  </div>
+  <form id='answerIncorrect' class='answerIncorrect'>
+    <label>Incorrect!</label>
+    <input type='submit' value='Next' id='incorrectButton' class='continueIncorrect'/>
+  </form>
   `);
 }
 
@@ -232,11 +234,9 @@ function finalScreen() {
   let tryAgainImg = 'img/try-again.png';
   let imgSrc;
   let scoreText;
-  let retryButton = '';
   if (currentStatus.currentScore > 3) {
     scoreText = 'Good Job!';
     imgSrc = wellDoneImg;
-    retryButton += '<button>Start Over!</button>';
   }
 
   if (currentStatus.currentScore < 4) {
@@ -244,11 +244,13 @@ function finalScreen() {
     imgSrc = tryAgainImg;
   }
   target.html(`
-    <finalBlock id='final-block'>
+    <finalBlock id='final-block' class='finalBlock'>
       <h3>${scoreText}</h3>
       <h2>You got ${currentStatus.currentScore} out of ${qA.questions.length} correct</h2>
       <img src='${imgSrc}' alt='results image' id='results-image'/> <br>
-      <div>${retryButton}</div>
+      <form class='retryButton'>
+        <input type='submit' value='Start Over!' class='finalSubmit'/>
+      </form>
     </finalBlock>
   `);
 }
