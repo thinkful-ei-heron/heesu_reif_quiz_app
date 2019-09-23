@@ -191,8 +191,11 @@ function createAnswers() {
   for (let i = 0; i < questionPosition.length; i++) {
     let answerValue = questionPosition[i];
     answersOutput += (`
-      <input type='radio' name='answerOptions' value='${answerValue}'/>
-      <label id='answerText'>${answerValue}</label>`);
+      <div class='answer-inline'>
+        <input type='radio' name='answerOptions' value='${answerValue}'/>
+        <label class='answer-text'>${answerValue}</label>
+      </div>
+      `);
   }
   // console.log(answersOutput);
   return (answersOutput);

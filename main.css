@@ -20,10 +20,14 @@ ul {
   width: 300px;
 }
 
-#answerText {
+.answers-test {
+  width: 300px;
+  margin: 0 auto;
+}
+
+.answer-inline {
   padding-left: 10px;
-  display: inline;
-  text-align: center;
+  text-align: left;
 }
 
 .welcome {
