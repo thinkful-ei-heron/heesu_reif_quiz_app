@@ -249,7 +249,7 @@ function finalScreen() {
     scoreText = 'You Suck!';
     retryBlock = `
       <form class='retry-button'>
-        <input type='image' src='img/try-again.png' alt='Start Over!' class='final-submit'/>
+        <input type='image' src='img/try-again.png' alt='Start Over!' class='results-image'/>
       </form>
     `;
   }
