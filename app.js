@@ -233,27 +233,31 @@ function renderIncorrect() {
 
 function finalScreen() {
   let target = $('#quiz-current');
-  let wellDoneImg = 'img/well-done.png';
-  let tryAgainImg = 'img/try-again.png';
-  let imgSrc;
   let scoreText;
+  let retryBlock;
   if (currentStatus.currentScore > 3) {
     scoreText = 'Good Job!';
-    imgSrc = wellDoneImg;
+    retryBlock = `
+      <img src='img/well-done.png' alt='results image' class='results-image'/>
+      <form class='retry-button'>
+        <input type='submit' value='Restart' class='final-submit'/>
+      </form>
+    `
   }
 
   if (currentStatus.currentScore < 4) {
     scoreText = 'You Suck!';
-    imgSrc = tryAgainImg;
+    retryBlock = `
+      <form class='retry-button'>
+        <input type='image' src='img/try-again.png' alt='Start Over!' class='final-submit'/>
+      </form>
+    `;
   }
   target.html(`
     <finalBlock id='final-block' class='finalBlock'>
       <h3>${scoreText}</h3>
       <h2>You got ${currentStatus.currentScore} out of ${qA.questions.length} correct</h2>
-      <img src='${imgSrc}' alt='results image' class='results-image'/> <br>
-      <form class='retry-button'>
-        <input type='submit' value='Start Over!' class='final-submit'/>
-      </form>
+      ${retryBlock}
     </finalBlock>
   `);
 }
