@@ -113,7 +113,7 @@ function renderQuiz() {
       </questionBlock>
       <form class='answers-test'>
         ${answer}
-      <input type='submit' class='the-button'/>
+      <input role='button' type='submit' class='the-button'/>
       </form>
     </section>
   `);
@@ -191,7 +191,7 @@ function createAnswers() {
     let answerValue = questionPosition[i];
     answersOutput += (`
       <div class='answer-inline'>
-        <input type='radio' name='answerOptions' value='${answerValue}'/>
+        <input role='button' type='radio' name='answerOptions' value='${answerValue}'/>
         <label class='answer-text'>${answerValue}</label>
       </div>
       `);
@@ -216,7 +216,7 @@ function renderCorrect() {
   $('#quiz-current').html(`
   <form class='answer-correct'>
     <label>Correct!</label>
-    <input type='submit' value='Next' class='continue-correct'/>
+    <input role='button' type='submit' value='Next' class='continue-correct'/>
   </form>
   `);
 }
@@ -225,7 +225,7 @@ function renderIncorrect() {
   $('#quiz-current').html(`
   <form class='answer-incorrect'>
     <label>Incorrect!</label>
-    <input type='submit' value='Next' class='continue-incorrect'/>
+    <input role='button' type='submit' value='Next' class='continue-incorrect'/>
   </form>
   `);
 }
@@ -239,7 +239,7 @@ function finalScreen() {
     retryBlock = `
       <img src='img/well-done.png' alt='results image' class='results-image'/>
       <form class='retry-button'>
-        <input type='submit' value='Restart!' class='final-submit'/>
+        <input role='button' type='submit' value='Restart!' class='final-submit'/>
       </form>
     `;
   }
@@ -248,7 +248,7 @@ function finalScreen() {
     scoreText = 'You Suck!';
     retryBlock = `
       <form class='retry-button'>
-        <input type='image' src='img/try-again.png' alt='Start Over!' class='results-image'/>
+        <input role='button' type='image' src='img/try-again.png' alt='Start Over!' class='results-image'/>
       </form>
     `;
   }
