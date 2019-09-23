@@ -1,4 +1,5 @@
 'use strict';
+
 // quiz questions
 const qA = {
   questions: [
@@ -170,8 +171,6 @@ function clickedTheButton() {
   });
 }
 
-
-
 // This will show question
 function createQuestion() {
   // get question from qA and print out question
@@ -240,7 +239,7 @@ function finalScreen() {
     retryBlock = `
       <img src='img/well-done.png' alt='results image' class='results-image'/>
       <form class='retry-button'>
-        <input type='submit' value='Restart' class='final-submit'/>
+        <input type='submit' value='Restart!' class='final-submit'/>
       </form>
     `
   }
