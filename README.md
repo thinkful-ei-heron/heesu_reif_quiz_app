@@ -3,4 +3,4 @@ Quiz app project
 Pair name: Bridger Reif Hammond and Heesu Kang
 
 Co-authored by: Heesu Kang <hskang135@gmail.com>
-We used VS Code Live Share to work on this project, rather than just screen sharing and having to git push/pull all the time.
+We used a mix of VS Code Live Share, and screensharing, while working on this project. We used Live Share almost all day Friday which is why those commits are all under reif's username.
