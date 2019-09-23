@@ -49,7 +49,7 @@ ul {
 
 .continue-correct, .continue-incorrect, .final-submit, .the-button {
   font-family: "Comic Sans MS", cursive, sans-serif;
-  background: red;
+  background: #9E0000;
   color: white;
   border: 0;
   padding: 10px 20px;
