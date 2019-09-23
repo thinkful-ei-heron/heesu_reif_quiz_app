@@ -237,7 +237,7 @@ function finalScreen() {
   if (currentStatus.currentScore > 3) {
     scoreText = 'Good Job!';
     retryBlock = `
-      <img src='img/well-done.png' alt='results image' class='results-image'/>
+      <img src='img/well-done.png' alt='Good Job' class='results-image'/>
       <form class='retry-button'>
         <input role='button' type='submit' value='Restart!' class='final-submit'/>
       </form>
@@ -248,7 +248,7 @@ function finalScreen() {
     scoreText = 'You Suck!';
     retryBlock = `
       <form class='retry-button'>
-        <input role='button' type='image' src='img/try-again.png' alt='Start Over!' class='results-image'/>
+        <input role='button' type='image' src='img/try-again.png' alt='Start Over' class='results-image'/>
       </form>
     `;
   }
