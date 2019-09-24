@@ -84,17 +84,11 @@ function renderWelcome() {
           <img src='${welcomeImg}'
           alt='math symbols' id='welcomeImg'/>
         </imageHolder>
-        <div id='start-button'>
-          <button type='button'>Start the quiz!</button>
-        </div>
+        <form class='start-form'>
+          <input role='button' type='submit' class='start-button the-button' value='Start the quiz!'/>
+        <form>
       </welcomeBlock>
   `);
-  // click start button -> renderQuiz();
-  $('#start-button').on('click', () => {
-    // logging to make sure button was clicked
-    // console.log(clicked);
-    renderQuiz();
-  });
 }
 
 // generates quiz container with all needed divs
@@ -131,8 +125,12 @@ function createStatus() {
 
 function clickedTheButton() {
   $('#quiz-container').on('submit', e => {
+    // console.log(e.target);
     e.preventDefault();
     e.stopImmediatePropagation();
+    if (e.target.className === 'start-form') {
+      renderQuiz();
+    }
     // console.log('the-button clicked');
     if (e.target.className === 'answers-test' && ($('input:radio:checked').length > 0)) {
       // console.log('answers submitted');
