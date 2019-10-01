@@ -12,6 +12,10 @@ body {
   text-align: center;
 }
 
+#quiz-current>form>label {
+  font-size: 1.5rem;
+}
+
 h2 {
   font-size: 1.5em;
 }
@@ -66,6 +70,7 @@ ul {
 .continue-correct, .continue-incorrect, .final-submit, .the-button {
   font-family: "Comic Sans MS", cursive, sans-serif;
   background: #9E0000;
+  font-size: 1.5rem;
   color: white;
   border: 0;
   padding: 10px 20px;

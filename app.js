@@ -249,7 +249,7 @@ function renderInCorrect(tOrF) {
   }
   $('#quiz-current').html(`
   <form class='answer-${classy}'>
-    <label>${aLabel}!</label>
+    <label class='resopnse-text'>${aLabel}!</label>
     <input role='button' type='submit' value='Next' class='continue-${classy}'/>
   </form>
   `);
