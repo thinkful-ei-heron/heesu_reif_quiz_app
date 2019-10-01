@@ -152,7 +152,7 @@ function clickedTheButton() {
         document.querySelector('.answers-test').appendChild(breaker);
         setTimeout(function () {
           document.querySelectorAll('.alert').forEach(aler => aler.remove());
-        }, 2000);
+        }, 3000);
 
         // alert('Please select an aswer below.');
       }
