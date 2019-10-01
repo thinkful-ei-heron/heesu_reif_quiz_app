@@ -80,10 +80,10 @@ function renderWelcome() {
         <heading class='welcomeHeading'>
           <h1>Welcome to our Math Quiz!!</h1>
         </heading>
-        <imageHolder class='welcomeImageContainer'>  
+        <section class='welcomeImageContainer'>  
           <img src='${welcomeImg}'
           alt='math symbols' id='welcomeImg'/>
-        </imageHolder>
+        </section>
         <form class='start-form'>
           <input role='button' type='submit' class='start-button the-button' value='Start the quiz!'/>
         <form>
@@ -99,16 +99,18 @@ function renderQuiz() {
   let answer = createAnswers();
   target.html(`
     <section id='quiz-current'>
-      <statusBlock id='position-and-score'>
+      <section id='position-and-score'>
         ${status}
-      </statusBlo>
-      <questionBlock id='current-question'>
-        ${question}
-      </questionBlock>
-      <form class='answers-test'>
-        ${answer}
-      <input role='button' type='submit' class='the-button'/>
-      </form>
+      </section>
+      <fieldset>
+        <section id='current-question'>
+          <legend>${question}</legend>
+        </section>
+        <form class='answers-test'>
+          ${answer}
+        <input role='button' type='submit' class='the-button'/>
+        </form>
+      </fieldset>
     </section>
   `);
   currentStatus.currentQuestionIndex += 1;
@@ -132,12 +134,27 @@ function clickedTheButton() {
       renderQuiz();
     }
     // console.log('the-button clicked');
-    if (e.target.className === 'answers-test' && ($('input:radio:checked').length > 0)) {
-      // console.log('answers submitted');
-      // console.log('clicked the-button');
-      if (e.target.closest('section')) {
-        // console.log('current-quiz');
-        checkAnswer();
+    if (e.target.className === 'answers-test') {
+      if ($('input:radio:checked').length > 0) {
+        if (e.target.closest('section')) {
+          // console.log('current-quiz');
+          checkAnswer();
+        }
+        // console.log('answers submitted');
+        // console.log('clicked the-button');
+      } else {
+        let noAnswer = document.createElement('span');
+        let breaker = document.createElement('br');
+        noAnswer.className = 'alert alert-styles';
+        breaker.className = 'alert';
+        noAnswer.textContent = 'Please choose an answer';
+        document.querySelector('.answers-test').appendChild(noAnswer);
+        document.querySelector('.answers-test').appendChild(breaker);
+        setTimeout(function () {
+          document.querySelectorAll('.alert').forEach(aler => aler.remove());
+        }, 2000);
+
+        // alert('Please select an aswer below.');
       }
     }
 
@@ -253,7 +270,7 @@ function finalScreen() {
   }
 
   if (currentStatus.currentScore < 4) {
-    scoreText = 'You Suck!';
+    scoreText = 'Better luck next time!';
     retryBlock = `
       <form class='retry-button'>
         <input role='button' type='image' src='img/try-again.png' alt='Start Over' class='results-image'/>
